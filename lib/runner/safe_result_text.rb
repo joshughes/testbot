@@ -1,4 +1,4 @@
-require 'iconv'
+
 
 module Testbot::Runner
   class SafeResultText
@@ -8,8 +8,9 @@ module Testbot::Runner
 
     def self.strip_invalid_utf8(text)
       # http://po-ru.com/diary/fixing-invalid-utf-8-in-ruby-revisited/
-      ic = Iconv.new('UTF-8//IGNORE', 'UTF-8')
-      ic.iconv(text + ' ')[0..-2]
+      text.encode('UTF-8', :invalid => :replace, :replace => '').encode('UTF-8')
+      #ic = Iconv.new('UTF-8//IGNORE', 'UTF-8')
+      #ic.iconv(text + ' ')[0..-2]
     end
 
     def self.clean_escape_sequences(text)

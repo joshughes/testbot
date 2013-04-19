@@ -9,7 +9,14 @@ require File.expand_path(File.join(File.dirname(__FILE__), 'group.rb'))
 require File.expand_path(File.join(File.dirname(__FILE__), 'runner.rb'))
 require File.expand_path(File.join(File.dirname(__FILE__), 'build.rb'))
 
-module Testbot::Server
+
+
+module Testbot::Server 
+  
+  class Server < Sinatra::Base
+    def self.valid_version?(runner_version)
+      Testbot.version == runner_version
+    end
 
   if ENV['INTEGRATION_TEST']
     set :port, 22880
@@ -17,11 +24,8 @@ module Testbot::Server
     set :port, Testbot::SERVER_PORT
   end
 
-  class Server
-    def self.valid_version?(runner_version)
-      Testbot.version == runner_version
-    end
-  end
+  puts :port
+  puts Testbot::SERVER_PORT
 
   post '/builds' do
     if Runner.total_instances == 0
@@ -98,6 +102,6 @@ module Testbot::Server
   get '/status/:dir/:file' do
     File.read(File.join(File.dirname(__FILE__), "/status/#{params[:dir]}/#{params[:file]}"))
   end
-
+  end
 end
 
