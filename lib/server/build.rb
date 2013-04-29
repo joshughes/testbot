@@ -1,4 +1,3 @@
-module Testbot::Server
 
   class Build < MemoryModel
 
@@ -33,4 +32,3 @@ module Testbot::Server
 
   end
 
-end

@@ -1,4 +1,4 @@
-module Testbot::Server
+  require File.expand_path(File.join(File.dirname(__FILE__), '/../shared/version'))
 
   class Job < MemoryModel
 
@@ -17,7 +17,7 @@ module Testbot::Server
     def self.next(params, remove_addr)
       clean_params = params.reject { |k, v| k == "no_jruby" }
       runner = Runner.record! clean_params.merge({ :ip => remove_addr, :last_seen_at => Time.now })
-      return unless Server.valid_version?(params[:version])
+      return unless params[:version] == Testbot.version
       [ next_job(params["build_id"], params["no_jruby"]), runner ]
     end
 
@@ -61,4 +61,4 @@ module Testbot::Server
 
   end
 
-end
+

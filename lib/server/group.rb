@@ -1,6 +1,5 @@
 require 'rubygems'
 
-module Testbot::Server
 
   class Group
 
@@ -45,4 +44,4 @@ module Testbot::Server
 
   end
 
-end
+

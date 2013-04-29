@@ -1,11 +1,10 @@
-require File.expand_path(File.join(File.dirname(__FILE__), '../../lib/shared/testbot.rb'))
-require File.expand_path(File.join(File.dirname(__FILE__), '../../lib/runner/job.rb'))
+require File.expand_path(File.join(File.dirname(__FILE__), '/../../lib/shared/testbot.rb'))
+require File.expand_path(File.join(File.dirname(__FILE__), '/../../lib/runner/job.rb'))
 require 'test/unit'
 require 'shoulda'
 require 'flexmock/test_unit'
 
 module Testbot::Runner
-
   class JobTest < Test::Unit::TestCase
 
     def expect_put_with(id, result_text, status, time = 0)

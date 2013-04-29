@@ -1,9 +1,8 @@
-require File.expand_path(File.join(File.dirname(__FILE__), '../../lib/server/group'))
+require File.expand_path(File.join(File.dirname(__FILE__), '/../../lib/server/group'))
 require 'test/unit'
 require 'shoulda'
 require 'flexmock/test_unit'
 
-module Testbot::Server
 
   class GroupTest < Test::Unit::TestCase
 
@@ -40,4 +39,4 @@ module Testbot::Server
 
   end
 
-end
+

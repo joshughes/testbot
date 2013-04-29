@@ -4,7 +4,7 @@ require 'shoulda'
 require 'flexmock/test_unit'
 require 'sinatra'
 require File.expand_path(File.join(File.dirname(__FILE__), '../../lib/requester/requester'))
-require File.expand_path(File.join(File.dirname(__FILE__), '../../lib/server/server'))
+require File.expand_path(File.join(File.dirname(__FILE__), '../../lib/server/testbot_server'))
 
 module Testbot
 
@@ -74,7 +74,7 @@ module Testbot
         should "start it in the foreground with run" do
           flexmock(SimpleDaemonize).should_receive(:stop).once.with(Testbot::SERVER_PID)
           flexmock(SimpleDaemonize).should_receive(:start).never
-          flexmock(Sinatra::Application).should_receive(:run!).once.with(:environment => "production")
+          flexmock(TestBotServer).should_receive(:run!).once.with(:environment => "production")
           assert_equal true, CLI.run([ "--server", 'run' ])
         end
       end

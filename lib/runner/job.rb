@@ -10,6 +10,7 @@ module Testbot::Runner
       @runner, @id, @build_id, @project, @root, @type, @ruby_interpreter, @files =
         runner, id, build_id, project, root, type, ruby_interpreter, files
       @success = true
+
     end
 
     def jruby?

@@ -1,16 +1,13 @@
-require File.expand_path(File.join(File.dirname(__FILE__), '../../lib/server/server'))
+require File.expand_path(File.join(File.dirname(__FILE__), '../../lib/server/testbot_server'))
 require 'test/unit'
 require 'rack/test'
 require 'shoulda'
 require 'flexmock/test_unit'
-
-set :environment, :test
-
-module Testbot::Server
+ENV['RACK_ENV'] = 'test'
 
   class ServerTest < Test::Unit::TestCase
     include Rack::Test::Methods
-
+    
     def setup
       Job.delete_all
       Runner.delete_all
@@ -18,7 +15,7 @@ module Testbot::Server
     end
 
     def app
-      Sinatra::Application
+      TestBotServer
     end
 
     context "POST /builds" do
@@ -499,5 +496,5 @@ module Testbot::Server
 
   end
 
-end
+
 

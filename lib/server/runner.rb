@@ -1,10 +1,10 @@
-module Testbot::Server
+
 
   class Runner < MemoryModel
 
     attribute :idle_instances, :integer
     attribute :max_instances, :integer
-
+    
     def self.record!(hash)
       create_or_update_by_mac!(hash)
     end
@@ -44,4 +44,4 @@ module Testbot::Server
 
   end
 
-end
+

@@ -45,5 +45,5 @@ module Testbot::Runner
       runner.send(:before_run, job)
     end 
   end
-end
 
+end

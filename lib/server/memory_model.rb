@@ -6,6 +6,7 @@ class MemoryModel < OpenStruct
   def initialize(hash)
     @@types[self.class] ||= {}
     hash = resolve_types(symbolize_keys(hash))
+    puts hash
     super(hash)
   end
 
