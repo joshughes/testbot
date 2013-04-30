@@ -132,6 +132,7 @@ module Testbot::Runner
 
       # todo: exit if this fails, report back, etc.
       system("cd #{job.project}; bundle") if using_bundler
+      system "#{command_prefix} rake db:test:prepare"
       system "#{command_prefix} rake testbot:before_run" if File.exists?("#{job.project}/lib/tasks/testbot.rake")
       system "#{command_prefix} ruby config/testbot/before_run.rb" if File.exists?("#{job.project}/config/testbot/before_run.rb")
     end
