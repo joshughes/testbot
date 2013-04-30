@@ -82,6 +82,8 @@ module Testbot::Runner
     end
 
     def spawn_process(command)
+      puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      puts command
       read_pipe, write_pipe = IO.pipe
       @pid = POSIX::Spawn::spawn(command, :err => write_pipe, :out => write_pipe, :pgroup => true)
 

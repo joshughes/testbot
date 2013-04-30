@@ -27,7 +27,7 @@ class RubyEnv
     end
 
     if bundler?(project_path)
-      "#{ruby_interpreter} -S bundle exec #{command}".strip
+      "bundle exec #{ruby_interpreter} -S #{command}".strip
     else
       "#{ruby_interpreter} -S #{command}".strip
     end
